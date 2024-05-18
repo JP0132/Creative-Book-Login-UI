@@ -1,0 +1,591 @@
+@import url("https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Reddit+Mono:wght@200..900&family=Yellowtail&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  line-height: 1.6;
+  font-family: "Reddit Mono", monospace;
+  font-optical-sizing: auto;
+  overflow: hidden;
+  background-color: #0d0000;
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+/* For outside the book */
+.exterior {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.mobile-form {
+  display: none;
+}
+
+/* Styling the book */
+.book {
+  position: relative;
+  width: 500px;
+  height: 800px;
+  transition: transform 0.5s;
+}
+
+/* Styling the pages and adding perspective to make the animation look flipping pages */
+.paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: 1500px;
+  color: rgb(38, 35, 30);
+}
+
+/* For the front and back of a paper */
+.front,
+.back {
+  background: url("paper.png");
+  filter: brightness(0.95) sepia(30%) saturate(80%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.5s;
+  /* box-shadow: 5px 5px 5px 2px rgba(93, 93, 93, 0.79); */
+}
+
+/* For the cover */
+#f1 {
+  background-image: radial-gradient(ellipse at top, #c2e9fb, #0575e6),
+    radial-gradient(ellipse at bottom, #0575e6, transparent), url("book.jpg");
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-blend-mode: multiply;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* Ensures the front is on top and when flipped the text on the back cannot be seen */
+.front {
+  z-index: 1;
+  backface-visibility: hidden;
+  border-left: 1px solid rgba(137, 137, 137, 0.6);
+}
+
+/* The back is at the bottom */
+.back {
+  z-index: 0;
+}
+
+/* For the content on the pages */
+.front-content,
+.back-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  padding: 20px;
+  text-align: center;
+}
+
+/* When flipped, it reverses the content back to original */
+.back-content {
+  transform: rotateY(180deg);
+}
+
+/* Flip effect */
+.flipped .front,
+.flipped .back {
+  transform: rotateY(-180deg);
+}
+
+/* Turn Page Buttons */
+.page-btn {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 30px;
+  margin: 0 10px 5px 10px;
+  color: #888888;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: transform 0.5s;
+}
+
+.next-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.prev-button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.page-btn:focus {
+  outline: none;
+}
+
+.page-btn:hover {
+  color: #d4d1d1;
+}
+
+/* Paper Stack Order */
+#p1 {
+  z-index: 3;
+}
+
+#p2 {
+  z-index: 2;
+}
+
+#p3 {
+  z-index: 1;
+}
+
+/* Styles for Front Cover */
+
+/* The reviews at the top of the cover */
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.review-card h3 {
+  font-weight: 400;
+}
+
+.review-card p {
+  font-weight: 900;
+  color: #ff3838;
+}
+
+/* Title of the book */
+.book-title {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  color: #ff0000;
+  font-family: "Reddit Mono", monospace;
+  font-optical-sizing: auto;
+  text-shadow: 1px 1px 0px #000, 2px 2px 0px #000, 3px 3px 0px #000,
+    4px 4px 0px #000, 5px 5px 0px #000;
+}
+
+.book-title span {
+  font-size: 55px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Front cover content */
+#cover-content {
+  text-align: center;
+}
+
+#cover-content h3 {
+  text-shadow: 1px 1px 0px #000, 1px 1px 0px #000, 1px 1px 0px #000,
+    2px 2px 0px #000, 2px 2px 0px #000;
+}
+
+/* Text at the bottom of the cover */
+.bottom-text {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  font-size: 50px;
+  font-weight: 300;
+}
+
+/* Styles for pages in the book */
+
+/* Chapter title */
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* For the login/register forms */
+.form-wrapper {
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.form p {
+  font-size: 12px;
+}
+
+.form p span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255);
+  border-radius: 40px;
+  font-size: 16px;
+  padding: 20px 45px 20px 20px;
+  color: #ffffff;
+}
+
+.input-box input::placeholder {
+  color: #ffffff;
+}
+
+.form-btn {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 40px;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+}
+
+/* To blend the paper material and bg colour as the background */
+#b1 {
+  background: #7dd355;
+  background: linear-gradient(rgba(125, 211, 85, 0.8), rgba(71, 146, 37, 0.8)),
+    url("paper.png");
+  background-blend-mode: multiply;
+}
+
+#b2 {
+  background: rgb(93, 189, 237);
+  background: linear-gradient(rgba(93, 189, 237, 0.8), rgba(33, 124, 170, 0.8)),
+    url("paper.png");
+  background-blend-mode: multiply;
+}
+
+/* page content */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.info p b {
+  font-size: 1.3rem;
+  color: rgb(255, 255, 255);
+}
+
+/* For the text at the bottom of the pages */
+#b1 h3,
+#b2 h3,
+#b3 h3 {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  color: rgb(255, 0, 0);
+}
+
+#b1 h3 {
+  font-size: 25px;
+}
+
+/* Back cover */
+#b3 {
+  background-image: radial-gradient(ellipse at top, #c2e9fb, #0575e6),
+    radial-gradient(ellipse at bottom, #0575e6, transparent),
+    url("bookcase.jpg");
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-blend-mode: multiply;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+#b3 h2 {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  color: #ff0000;
+  text-shadow: 1px 1px 0px #000, 1px 1px 0px #000, 1px 1px 0px #000,
+    2px 2px 0px #000, 2px 2px 0px #000;
+  font-family: "Goudy Bookletter 1911", serif;
+  font-size: 2rem;
+}
+
+#b3 h3 {
+  font-size: 30px;
+  color: #ff0000;
+  text-shadow: 1px 1px 0px #000, 1px 1px 0px #000, 1px 1px 0px #000,
+    2px 2px 0px #000, 2px 2px 0px #000;
+}
+
+/* Positioning all the titles at the top */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Smaller screens */
+@media only screen and (max-width: 1000px) {
+  .book {
+    width: 400px;
+    height: 700px;
+  }
+
+  .reviews {
+    font-size: 14px;
+  }
+
+  .page-btn {
+    font-size: 20px;
+  }
+
+  .book-title span {
+    font-size: 45px;
+  }
+
+  .bottom-text {
+    font-size: 40px;
+  }
+
+  .info {
+    font-size: 15px;
+  }
+
+  .info p b {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .exterior h1 {
+    font-size: 30px;
+  }
+
+  .book {
+    width: 300px;
+    height: 600px;
+  }
+
+  .reviews {
+    font-size: 0.7rem;
+    padding: 10px 3px 0 3px;
+  }
+
+  .page-btn {
+    font-size: 20px;
+  }
+
+  .book-title {
+    top: 80px;
+    font-size: 1.1rem;
+  }
+
+  .book-title span {
+    font-size: 2.1rem;
+  }
+
+  #cover-content {
+    font-size: 0.8rem;
+  }
+
+  .bottom-text {
+    font-size: 30px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    margin-top: 5px;
+  }
+
+  .info {
+    font-size: ;
+  }
+
+  .form {
+    width: 200px;
+  }
+
+  .input-box {
+    height: 30px;
+    margin: 15px 0;
+  }
+
+  .input-box input {
+    border-radius: 40px;
+    font-size: 12px;
+    padding: 15px 40px 15px 15px;
+  }
+
+  .form-btn {
+    font-size: 12px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 40px;
+    padding: 5px 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .form p {
+    font-size: 12px;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+
+  .info p b {
+    font-size: 13px;
+  }
+
+  #b1 h3,
+  #b2 h3,
+  #b3 h3 {
+    bottom: 30px;
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  #b1 h3 {
+    font-size: 20px;
+  }
+
+  #b3 h3 {
+    font-size: 20px;
+  }
+
+  #b3 h2 {
+    top: 40px;
+    padding: 5px;
+    font-family: "Goudy Bookletter 1911", serif;
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .book {
+    display: none;
+  }
+
+  .form-wrapper {
+    border-radius: 0;
+  }
+  .mobile-form {
+    display: block;
+    box-shadow: rgb(1, 4, 8) 0px 20px 30px -10px;
+  }
+
+  #mobile-login {
+    background: #7dd355;
+    background: linear-gradient(rgba(125, 211, 85, 0.8), rgba(71, 146, 37, 0.8)),
+      url("paper.png");
+    background-blend-mode: multiply;
+    filter: brightness(0.95) sepia(30%) saturate(80%);
+  }
+
+  #mobile-sign {
+    background: rgb(93, 189, 237);
+    background: linear-gradient(
+        rgba(93, 189, 237, 0.8),
+        rgba(33, 124, 170, 0.8)
+      ),
+      url("paper.png");
+    background-blend-mode: multiply;
+    filter: brightness(0.95) sepia(30%) saturate(80%);
+  }
+
+  .pin {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .show {
+    display: block;
+  }
+
+  .remove {
+    display: none;
+  }
+
+  #goToSignUp,
+  #goToLogin {
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+  }
+
+  #goToSignUp:hover,
+  #goToLogin:hover {
+    text-decoration: underline !important;
+  }
+}

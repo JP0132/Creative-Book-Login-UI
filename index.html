@@ -1,0 +1,234 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Content outside the book -->
+    <div class="exterior">
+        <h1>Join the No. 1 Book Club in the World.</h1>
+        <p><em>Use the arrows on the book to navigate...</em></p>
+    </div>
+
+    <div class="mobile-form">
+        <div id="mobile-login" class="form-wrapper show">
+            <div class="pin"></div>
+            <form id="loginForm" class="form">
+                <h2>Login In</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="Enter Your Username or Email" name="username" required />
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" name="password" required />
+                </div>
+                <button class="form-btn" type="submit">Login</button>
+                <p>Don't have an account? <span id="goToSignUp">Sign Up Here</span></p>
+            </form>
+        </div>
+        <div id="mobile-sign" class="form-wrapper remove">
+            <div class="pin"></div>
+            <form id="signUpForm" class="form">
+                <h2>Join Us!</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" name="username" required />
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" name="email" required />
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" name="password" required />
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Enter Your Favourite Book" name="book" required />
+                </div>
+                <button class="form-btn" type="submit">Sign Up</button>
+                <p>Already have an account? <span id="goToLogin">Login Here</span></p>
+            </form>
+        </div>
+    </div>
+
+    
+    <!-- Book -->
+    <div id="book" class="book">
+        <!-- Page 1-->
+        <div id="p1" class="paper">
+            <!-- Cover Page -->
+            <div id="cover" class="front">
+                <div id="f1" class="front-content">
+                    <div class="reviews">
+                        <div class="review-card">
+                            <h3>'Brilliant'</h3>
+                            <p>TIM <br/> BLACK</p>
+                        </div>
+                        <div class="review-card">
+                            <h3>'Adventurous'</h3>
+                            <p>SARAH <br/> MILLER</p>
+                        </div>
+                        <div class="review-card">
+                            <h3>'Entertaining'</h3>
+                            <p>JON <br/>  WILFORD</p>
+                        </div>
+                    </div>
+                    <h1 class="book-title">WELCOME TO <br/><span>CHAPTER CHASERS</span></h1>
+                    <div id="cover-content">
+                        <h3>
+                            Do you dare to join the adventure of a lifetime?
+                        </h3>
+                        <h3 style="color:red">
+                            Or will you let the pages turn without you...
+                        </h3>
+                    </div>
+                    <div>
+                        <h1 class="bottom-text">JP CORPORATIONS</h1>
+                        <button class="next-button page-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                        <button class="prev-button page-btn">Flip-Over</i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome back Page -->
+            <div class="back">
+                <div id="b1" class="back-content">
+                    <h1 class="title">Welcome Back Chaser!</h1>
+                    <div class="info">
+                        <p>
+                            The chapters continued, but the story wasn't the same without you.
+                        </p>
+    
+                        <p>
+                            <b>Reignite your passion for reading</b> with friends who share your love for literature.
+                        </p>
+                        <p> 
+                            Dive back into the endless worlds hidden within pages, and let's create new memories together.
+                        </p>
+                    </div>
+
+                    <h3>The adventure awaits...</h3>
+                    <button class="prev-button page-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2-->
+        <div id="p2" class="paper">
+            <!-- Login Page -->
+            <div class="front">
+                <div id="f2" class="front-content">
+                        <h1 class="title">Chapter 1: Login Page</h1>
+                        <div style="background-color:rgb(125, 211, 85);" class="form-wrapper">
+                            <form id="loginForm" class="form">
+                                <h2>Login In</h2>
+                                <div class="input-box">
+                                    <input type="text" placeholder="Enter Your Username or Email" name="username" required />
+                                </div>
+                                <div class="input-box">
+                                    <input type="password" placeholder="Password" name="password" required />
+                                </div>
+                                <button class="form-btn" type="submit">Login</button>
+                                <p>Don't have an account? <span id="goToSignUpBook">Go To Next Page</span></p>
+                            </form>
+                        </div>
+                   
+                    <button class="next-button page-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Sign up Info Page -->
+            <div class="back">
+                <div id="b2" class="back-content">
+                    <h1 class="title">Chapter 2: Why Join?</h1>
+                    <div class="info">
+                        <p>
+                            <b>Discover New Horizons:</b> Each book is a portal to another world.
+                            Join us and explore places and stories you've never imagined.
+                        </p>
+    
+                        <p>
+                            <b>Like-Minded Souls:</b> Our club is a tapestry of readers who share a passion for literature.
+                            Find your next best friend or your literary soulmate here.
+                        </p>
+    
+                        <p>
+                            <b>Exclusive Access:</b> As a member, you'll get exclusive access to author events, book signings, and early releases. 
+                        </p>
+    
+                        <p>
+                            <b>It's Free!</b> There's no cost to join—just bring your enthusiasm for reading.
+                        </p>
+
+                    </div>
+                    
+
+                    <h3>Ready to turn the page? Sign up now and let the adventure begin!</h3>
+
+                    <button class="prev-button page-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Page 3-->
+        <div id="p3" class="paper">
+            <!-- Sign Up Page -->
+            <div class="front">
+                <div id="f3" class="front-content">
+                    <h1 class="title">Chapter 3: Sign-Up</h1>
+                    <div style="background-color:rgb(93, 189, 237);" class="form-wrapper">
+                        <form id="signUpForm" class="form">
+                            <h2>Join Us!</h2>
+                            <div class="input-box">
+                                <input type="text" placeholder="Username" name="username" required />
+                            </div>
+                            <div class="input-box">
+                                <input type="email" placeholder="Email" name="email" required />
+                            </div>
+                            <div class="input-box">
+                                <input type="password" placeholder="Password" name="password" required />
+                            </div>
+                            <div class="input-box">
+                                <input type="text" placeholder="Enter Your Favourite Book" name="book" required />
+                            </div>
+                            <button class="form-btn" type="submit">Sign Up</button>
+                            <p>Already have an account? <span id="goToLoginBook">Go To Previous Page</span></p>
+                        </form>
+                    </div>
+                    <button class="next-button page-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Back Page -->
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2><b>Where every chapter is a chase, and every reader is a seeker.</b></h2>
+
+                    <div class="info">
+                        <p>
+                            Founded in the quaint town of Abbots Langley, there exists a club known as 
+                            the Chapter Chasers-a collective of devouring readers who are on the hunt for the next story
+                        </p>
+    
+                        <p>Join Chapter Chasers, where the story never ends, and the pursuit is just as thrilling as the catch.</p>
+                    </div>
+
+                    <h3><b>Embrace the chase.</b></h3>
+
+                    <button class="next-button page-btn">Flip-Over</button>
+                    <button class="prev-button page-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Next Button -->
+</body>
+<script src="main.js"></script>
+
+</html>
