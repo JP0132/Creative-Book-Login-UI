@@ -22,7 +22,14 @@ For this challenge I decided to create the UI for a book club, however, I did no
 
 ## Desktop
 
+
+https://github.com/JP0132/Creative-Book-Login-UI/assets/78804278/3dec0166-a367-4398-8bed-83cf95110da9
+
 ## Mobile
+
+
+https://github.com/JP0132/Creative-Book-Login-UI/assets/78804278/c20943c8-9264-4a6f-a8f0-bbb6d5259dcd
+
 
 # How to run it?
 
